@@ -1,0 +1,15 @@
+[
+  {
+    "ProductId": 1,
+    "Rates": [
+      {
+        "CountryId": 1,
+        "Rate": 5.5
+      },
+      {
+        "CountryId": 2,
+        "Rate": 20
+      }
+    ]
+  }
+]

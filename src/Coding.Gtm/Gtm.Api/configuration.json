@@ -1,0 +1,39 @@
+{
+  "AppConfig": {
+    "ApplicationName": "GTM",
+    "ApplicationTitle": "Gtm - Purchases",
+    "TermsOfServiceOpenApi": "https://gtm.com/terms",
+    "NameOpenApiContact": "Gtm",
+    "EmailOpenApiContact": "gtm@gtm.pt",
+    "UrlOpenApiContact": "https://twitter.com/spboyer",
+    "NameOpenApiLicense": "Use under GTM",
+    "UrlOpenApiLicense": "https://example.com/license",
+    "Documents": [
+      {
+        "DocumentName": "CRUD",
+        "Title": "GTM Api documentation",
+        "Description": "Create, read, update and delete are the four basic operations of the system."
+      },
+      {
+        "DocumentName": "Security",
+        "Title": "GTM Api documentation",
+        "Description": "Services related to system security."
+      }
+    ],
+    "AllowedMethods": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+    "AllowedHeaders": [
+      "Authorization"
+    ],
+    "Database": {
+      "Country": "Data/Country.json",
+      "Product": "Data/Product.json",
+      "ProductPrice": "Data/ProductPrice.json",
+      "User": "Data/User.json"
+    }
+  }
+}

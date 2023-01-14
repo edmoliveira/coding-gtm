@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Name": "France",
+    "Rates": [ 5.5, 10, 20 ]
+  },
+  {
+    "Id": 2,
+    "Name": "United Kingdom",
+    "Rates": [ 5, 20 ]
+  },
+  {
+    "Id": 3,
+    "Name": "Portugal",
+    "Rates": [ 6, 13, 23 ]
+  },
+  {
+    "Id": 4,
+    "Name": "Sain",
+    "Rates": [ 10, 21 ]
+  }
+]
