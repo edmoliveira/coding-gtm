@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Gtm.Business.Infrastructure.Repositories.User
+﻿namespace Gtm.Business.Infrastructure.Repositories.User
 {
     /// <summary>
     /// Encapsulation of logic to access data sources.

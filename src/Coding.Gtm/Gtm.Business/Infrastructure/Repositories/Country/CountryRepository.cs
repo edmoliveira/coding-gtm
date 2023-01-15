@@ -1,6 +1,5 @@
 ﻿using Gtm.Business.Infrastructure.Helpers.Extensions;
 using Gtm.Business.Infrastructure.Helpers.Interfaces;
-using Gtm.Business.Infrastructure.Repositories.User;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 

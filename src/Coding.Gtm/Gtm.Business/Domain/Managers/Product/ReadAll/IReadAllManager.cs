@@ -1,4 +1,4 @@
-﻿namespace Gtm.Business.Domain.Product.ReadAll
+﻿namespace Gtm.Business.Domain.Managers.Product.ReadAll
 {
     /// <summary>
     /// Product Manager

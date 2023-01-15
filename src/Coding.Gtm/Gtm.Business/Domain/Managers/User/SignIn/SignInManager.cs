@@ -78,8 +78,9 @@ namespace Gtm.Business.Domain.Managers.User.SignIn
             _logger.LogBeginInformation(methodName);
 
             var users = await _repository.ReadAsync().ConfigureAwait(false);
+
             var user = users.FirstOrDefault(u => u.Login == request.Login &&
-                        u.Password == Cryptography.Encrypt(request.Password, _appConfig.AuthTokenSecrect));
+                        Cryptography.Decrypt(u.Password, _appConfig.AuthTokenSecrect) == request.Password);
 
             if (user == null)
             {

@@ -1,4 +1,4 @@
-﻿using Gtm.Business.Domain.Managers.Product.ReadAll;
+﻿using Gtm.Business.Domain.Managers.User.SignIn;
 using Gtm.Business.Infrastructure.Helpers.Controllers;
 using Gtm.Business.Infrastructure.Helpers.Extensions;
 using Gtm.Business.Infrastructure.Helpers.Filters;
@@ -7,70 +7,73 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace Gtm.Api.Controllers.Products
+namespace Gtm.Api.Controllers.Users
 {
     /// <summary>
-    /// Product CRUD.
+    /// Platform security.
     /// </summary>
     [ApiController]
     [Produces("application/json")]
-    [Route("api/products")]
-    [Authorize()]
-    public sealed class ProductController : CustomControllerBase
+    [Route("api/users/sign-in")]
+    [AllowAnonymous]
+    public class SignInController : CustomControllerBase
     {
-        #region Fields
+        #region Fields private
 
         /// <summary>
-        /// Product Manager
+        /// User Login Manager.
         /// </summary>
-        private readonly IReadAllManager _manager;
+        private readonly ISignInManager _manager;
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the Gtm.Api.Controllers.Products.ProductController class.
+        /// Initializes a new instance of the Gtm.Api.Controllers.Users.SignInController class.
         /// </summary>
-        /// <param name="manager">Product Manager.</param>
+        /// <param name="manager">User Login Manager.</param>
         /// <param name="logger">Log</param>
-        public ProductController(IReadAllManager manager, ILogger<ProductController> logger) : base(logger)
+        public SignInController(ISignInManager manager, ILogger<SignInController> logger) : base(logger)
         {
             _manager = manager;
         }
 
         #endregion
 
-        #region Methods
-
-        #region public
+        #region Method public
 
         /// <summary>
-        /// Gets all registered products.
+        /// Login to the platform with credentials.
         /// </summary>
-        /// <returns>ReadAllResponse</returns>
-        [ApiExplorerSettings(GroupName = Crud_GroupName)]
-        [HttpGet()]
+        /// <param name="request">Request data</param>
+        /// <returns>SignInResponse</returns>
+        [ApiExplorerSettings(GroupName = Security_GroupName)]
+        [HttpPost()]
         [ApiVersion("1.0")]
         [Route("{v:apiVersion}")]
         [TypeFilter(typeof(RequestFilterAttribute))]
-        [ProducesResponseType(typeof(ReadAllResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SignInResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [SwaggerOperation(
-            Summary = "Get All Products",
-            Description = "Gets all registered products."
+            Summary = "Sign In",
+            Description = "Login to the platform with credentials."
         )]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> SignInAsync(SignInRequest request)
         {
             return await TryActionResultAsync(async () =>
             {
-                string methodName = nameof(GetAllAsync);
+                string methodName = nameof(SignInAsync);
 
                 Logger.LogInformation(GetMethodBeginMessage(methodName));
 
-                ReadAllResponse response = await _manager.HandleAsync().ConfigureAwait(false);
+                Logger.DebugIsEnabled(() => string.Concat("Request: ", JsonConvert.SerializeObject(request)));
+
+                SignInResponse response = await _manager.HandleAsync(request).ConfigureAwait(false);
 
                 Logger.DebugIsEnabled(() => string.Concat("Response: ", JsonConvert.SerializeObject(response)));
 
@@ -79,8 +82,6 @@ namespace Gtm.Api.Controllers.Products
                 return Ok(response);
             }).ConfigureAwait(false);
         }
-
-        #endregion
 
         #endregion
     }

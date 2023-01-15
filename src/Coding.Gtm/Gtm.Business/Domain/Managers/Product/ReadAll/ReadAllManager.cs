@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using Gtm.Business.Domain.Product.Models;
+using Gtm.Business.Domain.Managers.Product.Models;
 using Gtm.Business.Infrastructure.Helpers.Extensions;
 using Gtm.Business.Infrastructure.Repositories.Product;
 using Microsoft.Extensions.Logging;
 
-namespace Gtm.Business.Domain.Product.ReadAll
+namespace Gtm.Business.Domain.Managers.Product.ReadAll
 {
     /// <summary>
     /// Product Manager
     /// </summary>
-    internal sealed class ReadAllManager: IReadAllManager
+    internal sealed class ReadAllManager : IReadAllManager
     {
         #region Fields
 
@@ -31,9 +31,9 @@ namespace Gtm.Business.Domain.Product.ReadAll
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the Gtm.Business.Domain.Product.ReadAll.ReadAllManager class.
+        /// Initializes a new instance of the Gtm.Business.Domain.Managers.Product.ReadAll.ReadAllManager class.
         /// </summary>
-        /// <param name="repository">User Repository</param>
+        /// <param name="repository">Product Repository</param>
         /// <param name="mapper">Data Mapper </param>
         /// <param name="logger">Log</param>
         public ReadAllManager(

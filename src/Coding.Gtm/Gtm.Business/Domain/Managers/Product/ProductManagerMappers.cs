@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Gtm.Business.Domain.Product.Profiles;
+using Gtm.Business.Domain.Managers.Product.Profiles;
 
-namespace Gtm.Business.Domain.Product
+namespace Gtm.Business.Domain.Managers.Product
 {
     /// <summary>
     /// Extension methods to add ProductManager mappers.

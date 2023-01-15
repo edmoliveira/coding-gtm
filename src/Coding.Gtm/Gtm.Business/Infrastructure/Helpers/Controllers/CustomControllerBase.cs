@@ -207,7 +207,7 @@ namespace Gtm.Business.Infrastructure.Helpers.Controllers
                     Logger.LogError(exception, exception.Message);
             }
 
-            if(result != null)
+            if (result != null)
             {
                 return result;
             }

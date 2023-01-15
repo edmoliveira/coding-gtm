@@ -1,14 +1,6 @@
-﻿using Gtm.Business.Infrastructure.Helpers.Interfaces;
-using Gtm.Business.Infrastructure.Repositories.User;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Gtm.Business.Infrastructure.Repositories
 {

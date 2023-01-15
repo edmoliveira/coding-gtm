@@ -5,7 +5,7 @@ namespace Gtm.Business.Infrastructure.Helpers
     /// <summary>
     /// Database
     /// </summary>
-    internal sealed class Database: IDatabase
+    internal sealed class Database : IDatabase
     {
         #region Properties
 

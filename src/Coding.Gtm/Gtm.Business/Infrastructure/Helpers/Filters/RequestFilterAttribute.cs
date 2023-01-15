@@ -34,7 +34,7 @@ namespace Gtm.Business.Infrastructure.Helpers.Filters
         /// <param name="applicationContext">One instance throughout the application per request.</param>
         /// <param name="logger">Log</param>
         public RequestFilterAttribute(
-            ISetApplicationContext applicationContext, 
+            ISetApplicationContext applicationContext,
             ILogger<RequestFilterAttribute> logger)
         {
             _applicationContext = applicationContext;

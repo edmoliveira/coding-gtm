@@ -1,4 +1,4 @@
-﻿namespace Gtm.Business.Domain.Product.Models
+﻿namespace Gtm.Business.Domain.Managers.Product.Models
 {
     /// <summary>
     /// Product model

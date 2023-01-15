@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Gtm.Business.Domain.Product.Models;
+using Gtm.Business.Domain.Managers.Product.Models;
 using Gtm.Business.Infrastructure.Repositories.Product;
 
-namespace Gtm.Business.Domain.Product.Profiles
+namespace Gtm.Business.Domain.Managers.Product.Profiles
 {
     /// <summary>
     /// Configuration for maps.
@@ -12,7 +12,7 @@ namespace Gtm.Business.Domain.Product.Profiles
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the Gtm.Business.Domain.Product.Profiles.ProductMapper class.
+        /// Initializes a new instance of the Gtm.Business.Domain.Managers.Product.Profiles.ProductMapper class.
         /// </summary>
         public ProductMapper()
         {

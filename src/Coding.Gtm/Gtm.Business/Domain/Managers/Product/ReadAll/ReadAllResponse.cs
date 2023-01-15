@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gtm.Business.Domain.Product.Models;
+﻿using Gtm.Business.Domain.Managers.Product.Models;
 
-namespace Gtm.Business.Domain.Product.ReadAll
+namespace Gtm.Business.Domain.Managers.Product.ReadAll
 {
     /// <summary>
     /// Response data.

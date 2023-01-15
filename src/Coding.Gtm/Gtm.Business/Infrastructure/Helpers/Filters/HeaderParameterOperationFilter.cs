@@ -37,7 +37,7 @@ namespace Gtm.Business.Infrastructure.Helpers.Filters
                             {
                                 Description = "JWT Authorization header using the Bearer scheme.",
                                 Name = "Authorization",
-                                Type = SecuritySchemeType.ApiKey,
+                                Type = SecuritySchemeType.Http,
                                 In = ParameterLocation.Header,
                                 Scheme = "bearer",
                                 Reference = new OpenApiReference {

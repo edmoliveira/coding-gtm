@@ -1,4 +1,4 @@
-﻿using Gtm.Business.Domain.Managers.Product.ReadAll;
+﻿using Gtm.Business.Domain.Managers.ProductPrice.Read;
 using Gtm.Business.Infrastructure.Helpers.Controllers;
 using Gtm.Business.Infrastructure.Helpers.Extensions;
 using Gtm.Business.Infrastructure.Helpers.Filters;
@@ -14,27 +14,27 @@ namespace Gtm.Api.Controllers.Products
     /// </summary>
     [ApiController]
     [Produces("application/json")]
-    [Route("api/products")]
+    [Route("api/products/prices")]
     [Authorize()]
-    public sealed class ProductController : CustomControllerBase
+    public sealed class PricesController : CustomControllerBase
     {
         #region Fields
 
         /// <summary>
-        /// Product Manager
+        /// ProductPrice Manager
         /// </summary>
-        private readonly IReadAllManager _manager;
+        private readonly IReadManager _manager;
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the Gtm.Api.Controllers.Products.ProductController class.
+        /// Initializes a new instance of the Gtm.Api.Controllers.Products.PricesController class.
         /// </summary>
-        /// <param name="manager">Product Manager.</param>
+        /// <param name="manager">ProductPrice Manager.</param>
         /// <param name="logger">Log</param>
-        public ProductController(IReadAllManager manager, ILogger<ProductController> logger) : base(logger)
+        public PricesController(IReadManager manager, ILogger<ProductController> logger) : base(logger)
         {
             _manager = manager;
         }
@@ -46,23 +46,24 @@ namespace Gtm.Api.Controllers.Products
         #region public
 
         /// <summary>
-        /// Gets all registered products.
+        /// Get all product prices in countries.
         /// </summary>
-        /// <returns>ReadAllResponse</returns>
+        /// <returns>ReadResponse</returns>
         [ApiExplorerSettings(GroupName = Crud_GroupName)]
         [HttpGet()]
         [ApiVersion("1.0")]
         [Route("{v:apiVersion}")]
         [TypeFilter(typeof(RequestFilterAttribute))]
-        [ProducesResponseType(typeof(ReadAllResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ReadResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [SwaggerOperation(
-            Summary = "Get All Products",
-            Description = "Gets all registered products."
+            Summary = "Get All Prices",
+            Description = "Get all product prices in countries."
         )]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllAsync([FromQuery] ReadRequest request)
         {
             return await TryActionResultAsync(async () =>
             {
@@ -70,7 +71,9 @@ namespace Gtm.Api.Controllers.Products
 
                 Logger.LogInformation(GetMethodBeginMessage(methodName));
 
-                ReadAllResponse response = await _manager.HandleAsync().ConfigureAwait(false);
+                Logger.DebugIsEnabled(() => string.Concat("Request: ", JsonConvert.SerializeObject(request)));
+
+                ReadResponse response = await _manager.HandleAsync(request).ConfigureAwait(false);
 
                 Logger.DebugIsEnabled(() => string.Concat("Response: ", JsonConvert.SerializeObject(response)));
 

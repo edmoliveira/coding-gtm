@@ -1,5 +1,4 @@
-﻿using Gtm.Business.Infrastructure.Helpers.Filters;
-using Gtm.Business.Infrastructure.Helpers.Interfaces;
+﻿using Gtm.Business.Infrastructure.Helpers.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
