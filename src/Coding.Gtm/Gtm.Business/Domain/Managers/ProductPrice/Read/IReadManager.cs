@@ -1,14 +1,14 @@
 ﻿namespace Gtm.Business.Domain.Managers.ProductPrice.Read
 {
     /// <summary>
-    /// ProductPrice Manager
+    /// ProductPrice Manager "Read"
     /// </summary>
     public interface IReadManager
     {
         #region Methods
 
         /// <summary>
-        /// Handles the ReadAll and asynchronously using Task.
+        /// Handles the Read and asynchronously using Task.
         /// </summary>
         /// <param name="request">Request data</param>
         /// <returns>

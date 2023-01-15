@@ -2,7 +2,9 @@
 using FluentValidation.AspNetCore;
 using Gtm.Business.Domain.Managers.Product;
 using Gtm.Business.Domain.Managers.Product.ReadAll;
+using Gtm.Business.Domain.Managers.ProductPrice;
 using Gtm.Business.Domain.Managers.ProductPrice.Read;
+using Gtm.Business.Domain.Managers.ProductPrice.Save;
 using Gtm.Business.Domain.Managers.User.SignIn;
 using Gtm.Business.Infrastructure.Helpers.Filters;
 using Gtm.Business.Infrastructure.Helpers.Interfaces;
@@ -171,7 +173,8 @@ namespace Gtm.Business.Infrastructure.Helpers
         {
             var configuration = new MapperConfiguration(c =>
             {
-                c.AddProductManagerProfiles();
+                c.AddProductProfiles();
+                c.AddProductPriceProfiles();
             });
 
             configuration.CreateMapper();
@@ -188,6 +191,7 @@ namespace Gtm.Business.Infrastructure.Helpers
             services.AddScoped<ISignInManager, SignInManager>();
             services.AddScoped<IReadAllManager, ReadAllManager>();
             services.AddScoped<IReadManager, ReadManager>();
+            services.AddScoped<ISaveManager, SaveManager>();
         }
 
         /// <summary>

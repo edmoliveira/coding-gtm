@@ -23,6 +23,18 @@
         /// Rates
         /// </summary>
         public IEnumerable<RateCountryProductPriceModel> Rates { get; set; }
+        /// <summary>
+        /// Price without VAT
+        /// </summary>
+        public decimal? PriceWithoutVAT { get; set; }
+        /// <summary>
+        /// Value Added Tax
+        /// </summary>
+        public int? VAT { get; set; }
+        /// <summary>
+        /// Price including VAT
+        /// </summary>
+        public decimal? PriceInclVAT { get; set; }
 
         #endregion
     }

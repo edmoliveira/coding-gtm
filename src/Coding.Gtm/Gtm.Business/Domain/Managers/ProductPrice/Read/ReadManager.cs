@@ -10,7 +10,7 @@ using System.Net;
 namespace Gtm.Business.Domain.Managers.ProductPrice.Read
 {
     /// <summary>
-    /// ProductPrice Manager
+    /// ProductPrice Manager "Read"
     /// </summary>
     internal sealed class ReadManager : IReadManager
     {
@@ -64,7 +64,7 @@ namespace Gtm.Business.Domain.Managers.ProductPrice.Read
         #region public
 
         /// <summary>
-        /// Handles the ReadAll and asynchronously using Task.
+        /// Handles the Read and asynchronously using Task.
         /// </summary>
         /// <param name="request">Request data</param>
         /// <returns>
@@ -118,6 +118,17 @@ namespace Gtm.Business.Domain.Managers.ProductPrice.Read
         {
             var countryRate = productPrice.Rates.FirstOrDefault(r => r.CountryId == country.Id);
 
+            decimal? priceWithoutVAT = null;
+            int? vat = null;
+            decimal? priceInclVAT = null;
+
+            if (countryRate != null)
+            {
+                priceWithoutVAT = countryRate.Price;
+                vat = (int)Math.Round(countryRate.Price * (countryRate.Rate / 100), MidpointRounding.AwayFromZero);
+                priceInclVAT = priceWithoutVAT + vat;
+            }
+
             return new CountryProductPriceModel
             {
                 CountryId = country.Id,
@@ -127,7 +138,10 @@ namespace Gtm.Business.Domain.Managers.ProductPrice.Read
                 {
                     Rate = r,
                     IsSaved = r == countryRate?.Rate
-                })
+                }),
+                PriceWithoutVAT = priceWithoutVAT,
+                VAT = vat,
+                PriceInclVAT = priceInclVAT
             };
         }
 

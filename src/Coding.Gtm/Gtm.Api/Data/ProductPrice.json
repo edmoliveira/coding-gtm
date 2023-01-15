@@ -4,10 +4,12 @@
     "Rates": [
       {
         "CountryId": 1,
+        "Price": 434.78,
         "Rate": 5.5
       },
       {
         "CountryId": 2,
+        "Price": 100.50,
         "Rate": 20
       }
     ]

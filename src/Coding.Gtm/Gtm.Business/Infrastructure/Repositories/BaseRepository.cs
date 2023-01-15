@@ -67,7 +67,7 @@ namespace Gtm.Business.Infrastructure.Repositories
         {
             string text = JsonConvert.SerializeObject(obj, Formatting.Indented);
 
-            byte[] encodedText = Encoding.Unicode.GetBytes(text);
+            byte[] encodedText = Encoding.UTF8.GetBytes(text);
 
             using var sourceStream =
                 new FileStream(

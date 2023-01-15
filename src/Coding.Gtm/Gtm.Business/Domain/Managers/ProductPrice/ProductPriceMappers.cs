@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Gtm.Business.Domain.Managers.Product.Profiles;
+using Gtm.Business.Domain.Managers.ProductPrice.Profiles;
 
-namespace Gtm.Business.Domain.Managers.Product
+namespace Gtm.Business.Domain.Managers.ProductPrice
 {
     /// <summary>
-    /// Extension methods to add ProductManager mappers.
+    /// Extension methods to add ProductPrice mappers.
     /// </summary>
-    internal static class ProductManagerMappers
+    internal static class ProductPriceMappers
     {
         #region Methods
 
@@ -16,9 +16,9 @@ namespace Gtm.Business.Domain.Managers.Product
         /// Adds an existing profiles type. Profile will be instantiated and added to the configuration.
         /// </summary>
         /// <param name="services">Create a MapperConfiguration instance and initialize configuration via the constructor.</param>
-        public static void AddProductManagerProfiles(this IMapperConfigurationExpression configuration)
+        public static void AddProductPriceProfiles(this IMapperConfigurationExpression configuration)
         {
-            configuration.AddProfile<ProductMapper>();
+            configuration.AddProfile<ProductPriceProfile>();
         }
 
         #endregion

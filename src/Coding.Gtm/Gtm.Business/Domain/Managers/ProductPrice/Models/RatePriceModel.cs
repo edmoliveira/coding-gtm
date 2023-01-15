@@ -1,9 +1,9 @@
-﻿namespace Gtm.Business.Infrastructure.Repositories.ProductPrice
+﻿namespace Gtm.Business.Domain.Managers.ProductPrice.Models
 {
     /// <summary>
-    /// Mapping to ProductPrice file.
+    /// Rate and Price model
     /// </summary>
-    internal sealed class RateProductPriceEntity
+    public sealed class RatePriceModel
     {
         #region Properties
 

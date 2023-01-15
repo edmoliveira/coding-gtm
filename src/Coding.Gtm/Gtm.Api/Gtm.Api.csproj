@@ -14,4 +14,19 @@
     <ProjectReference Include="..\Gtm.Business\Gtm.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Data\Country.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Data\Product.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Data\ProductPrice.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Data\User.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
