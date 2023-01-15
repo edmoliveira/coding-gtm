@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Gtm.Business.Domain.Managers.Product;
 using Gtm.Business.Domain.Managers.Product.ReadAll;
@@ -158,6 +159,7 @@ namespace Gtm.Business.Infrastructure.Helpers
 
             AddMapperConfiguration(services);
             RegisterManager(services);
+            RegisterValidator(services);
             RegisterRepository(services);
         }
 
@@ -192,6 +194,15 @@ namespace Gtm.Business.Infrastructure.Helpers
             services.AddScoped<IReadAllManager, ReadAllManager>();
             services.AddScoped<IReadManager, ReadManager>();
             services.AddScoped<ISaveManager, SaveManager>();
+        }
+
+        /// <summary>
+        /// Registers validator services
+        /// </summary>
+        /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
+        private static void RegisterValidator(IServiceCollection services)
+        {
+            services.AddScoped<IValidator<SaveRequest>, SaveValidator>();
         }
 
         /// <summary>

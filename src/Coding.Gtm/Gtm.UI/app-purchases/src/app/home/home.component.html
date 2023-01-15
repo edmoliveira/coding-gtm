@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="app-toolbar">
+    <button mat-icon-button  (click)="home()">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span style="margin-left: 5px;">Purchases</span>
+    <span class="toolbar-spacer"></span>
+    <span>{{userName}}</span>
+    <button mat-icon-button  style="margin-right: 10px;" (click)="signOut()">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>

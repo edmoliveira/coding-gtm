@@ -1,18 +1,18 @@
 [
   {
     "Id": 1,
-    "Description": "product 1"
+    "Description": "Product 1"
   },
   {
     "Id": 2,
-    "Description": "product 2"
+    "Description": "Product 2"
   },
   {
     "Id": 3,
-    "Description": "product 3"
+    "Description": "Product 3"
   },
   {
     "Id": 4,
-    "Description": "product 4"
+    "Description": "Product 4"
   }
 ]

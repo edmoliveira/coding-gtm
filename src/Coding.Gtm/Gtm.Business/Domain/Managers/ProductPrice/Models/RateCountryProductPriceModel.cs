@@ -8,10 +8,6 @@
         #region Properties
 
         /// <summary>
-        /// Country id
-        /// </summary>
-        public long CountryId { get; set; }
-        /// <summary>
         /// Country rate
         /// </summary>
         public decimal Rate { get; set; }

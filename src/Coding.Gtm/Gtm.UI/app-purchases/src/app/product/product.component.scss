@@ -1,0 +1,43 @@
+.container-prices {
+    width: 100%;
+    max-width: 720px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rate-hidden {
+    display: none;
+}
+
+.rate-show {
+    display: block!important;
+}
+
+mat-card-actions button {
+    width: 150px;
+}
+
+.form-price {
+    max-width: 300px;
+}
+
+.form-price mat-form-field{
+    width: 100%;
+}
+
+.form-price mat-radio-button {
+    margin-right: 5px;
+  }
+
+@media screen and (max-width: 400px) {
+    .container-prices {
+        padding: initial;
+    }
+
+    .form-price {
+        max-width: initial;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+}

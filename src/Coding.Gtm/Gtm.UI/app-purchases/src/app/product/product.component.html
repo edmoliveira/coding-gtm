@@ -1,0 +1,74 @@
+<ng-container *ngIf="productPriceResponse | async; let response">
+    <mat-toolbar color="primary" class="app-toolbar">
+        <span style="padding: 10px;">Product Prices [{{response.productPrice.productName}}]</span>
+    </mat-toolbar>
+    <div class="container-prices">
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(response.productPrice.productId, response.productPrice.countries)">
+            <mat-card class="example-card" align="center">
+                <div class="container form-price">
+                    <div class="row">
+                        <mat-card-content>
+                            <mat-form-field >
+                            <mat-label>Country</mat-label>
+                                <select matNativeControl formControlName="countryId">
+                                    <option  
+                                    *ngFor="let country of response.productPrice.countries" 
+                                    [ngValue]="country">
+                                        {{country.countrytName}}
+                                    </option>
+                                </select>
+                            </mat-form-field>                       
+                        </mat-card-content>
+                    </div>
+                    <div class="rate-hidden" [class.rate-show] = "rates != null && rates.length > 0">
+                        <div class="row" style="text-align: left;margin-bottom: 15px;">
+                            <label>VAT Rate</label>
+                        </div>
+                        <div class="row" style="margin-bottom: 15px;">
+                            <mat-radio-group aria-label="Select an option" formControlName="rate">
+                                <mat-radio-button 
+                                *ngFor="let item of rates" 
+                                [value]="item.rate"
+                                [checked]="item.isSaved">{{item.rate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div class="row">
+                            <mat-form-field  class="form-control">
+                                <mat-label>Price without VAT</mat-label>
+                                <input type="text" matInput 
+                                        formControlName="priceWithoutVAT"
+                                        placeholder="0.00" style="text-align: right;">
+                                <mat-error>
+                                    Price without VAT is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>  
+                        </div>
+                        <div class="row">
+                            <mat-form-field  class="form-control">
+                                <mat-label>Value Added Tax </mat-label>
+                                <input type="text" matInput 
+                                        formControlName="vat"
+                                        placeholder="0.00" style="text-align: right;" readonly>
+                            </mat-form-field>  
+                        </div>         
+                        <div class="row">
+                            <mat-form-field  class="form-control">
+                                <mat-label>Price incl. VAT</mat-label>
+                                <input type="text" matInput 
+                                        formControlName="priceInclVAT"
+                                        placeholder="0.00" style="text-align: right;">
+                                <mat-error>
+                                    Price incl. VAT is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>  
+                        </div> 
+                    </div>                     
+                </div>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="warn" (click)="cancel()">Go back</button>
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid || !formGroup.touched">Save</button>
+                </mat-card-actions>
+              </mat-card>
+        </form>
+    </div>
+</ng-container>

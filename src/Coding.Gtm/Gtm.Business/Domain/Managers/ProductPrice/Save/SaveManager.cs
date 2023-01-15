@@ -73,7 +73,7 @@ namespace Gtm.Business.Domain.Managers.ProductPrice.Save
 
             _logger.LogBeginInformation(methodName);
 
-            var prices = await _repository.ReadAsync().ConfigureAwait(false);
+            var prices = (await _repository.ReadAsync().ConfigureAwait(false)).ToList();
 
             var productPrice = prices.FirstOrDefault(u => u.ProductId == request.ProductId);
 
@@ -90,6 +90,8 @@ namespace Gtm.Business.Domain.Managers.ProductPrice.Save
                 {
                     ProductId = request.ProductId,
                 };
+
+                prices.Add(productPrice);
             }
 
             productPrice.Rates = _mapper.Map<IEnumerable<RateProductPriceEntity>>(request.Rates);

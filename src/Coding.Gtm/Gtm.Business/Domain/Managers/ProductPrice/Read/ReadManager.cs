@@ -85,7 +85,10 @@ namespace Gtm.Business.Domain.Managers.ProductPrice.Read
 
             if (productPrice == null)
             {
-                throw new RequestException(HttpStatusCode.NotFound, "Not Found!");
+                if (!products.Any(p => p.Id == request.ProductId))
+                {
+                    throw new RequestException(HttpStatusCode.NotFound, "Product not found!");
+                }
             }
 
             _logger.LogEndInformation(methodName);
@@ -116,7 +119,7 @@ namespace Gtm.Business.Domain.Managers.ProductPrice.Read
         /// <returns>Returns the model</returns>
         private static CountryProductPriceModel CreateCountryProductPrice(CountryEntity country, ProductPriceEntity productPrice)
         {
-            var countryRate = productPrice.Rates.FirstOrDefault(r => r.CountryId == country.Id);
+            var countryRate = productPrice?.Rates.FirstOrDefault(r => r.CountryId == country.Id);
 
             decimal? priceWithoutVAT = null;
             int? vat = null;
