@@ -38,9 +38,15 @@
                                 <input type="text" matInput 
                                         formControlName="priceWithoutVAT"
                                         placeholder="0.00" style="text-align: right;">
-                                <mat-error>
+                                <mat-error  *ngIf="formGroup.controls.priceWithoutVAT?.errors?.required">
                                     Price without VAT is <strong>required</strong>
                                 </mat-error>
+                                <mat-error *ngIf="formGroup.controls.priceWithoutVAT?.errors?.pattern">
+                                    Incorrect value
+                                </mat-error>     
+                                <mat-error *ngIf="formGroup.controls.priceWithoutVAT?.errors?.min">
+                                    Price without VAT must be greater than 0
+                                </mat-error>                                  
                             </mat-form-field>  
                         </div>
                         <div class="row">
@@ -57,9 +63,15 @@
                                 <input type="text" matInput 
                                         formControlName="priceInclVAT"
                                         placeholder="0.00" style="text-align: right;">
-                                <mat-error>
+                                <mat-error *ngIf="formGroup.controls.priceInclVAT?.errors?.required">
                                     Price incl. VAT is <strong>required</strong>
                                 </mat-error>
+                                <mat-error *ngIf="formGroup.controls.priceInclVAT?.errors?.pattern">
+                                    Incorrect value
+                                </mat-error>     
+                                <mat-error *ngIf="formGroup.controls.priceInclVAT?.errors?.min">
+                                    Price incl. VAT must be greater than 0
+                                </mat-error>                                                            
                             </mat-form-field>  
                         </div> 
                     </div>                     
